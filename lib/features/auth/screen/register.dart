@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_uas/components/button/cbutton.dart';
 import 'package:project_uas/components/textform/ctextform.dart';
+import 'package:project_uas/features/auth/controller/register_controller.dart';
 import 'package:project_uas/features/splash/screen/splash.dart';
 import 'package:project_uas/utils/constants/ccolor.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+  RegisterScreen({super.key});
+  final controller = Get.put(RegisterScreenController());
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,22 +42,22 @@ class RegisterScreen extends StatelessWidget {
             const SizedBox(
             height: 20.0,
             ),
-            CTextForm(label: "Email"),
+            CTextForm(label: "Email", textController: controller.email,),
             const SizedBox(
               height: 11.0,
             ),
-            CTextForm(label: "Username"),
+            CTextForm(label: "Username", textController: controller.username),
             const SizedBox(
               height: 11.0,
             ),
-            CTextForm(label: "Kata Sandi", isPassword: true),
+            CTextForm(label: "Kata Sandi", isPassword: true, textController: controller.password),
             const SizedBox(
               height: 32.0,
             ),
             CButton(
                 label: "Daftar",
                 onPressed: () {
-                  Get.to(() => SplashScreen());
+                  controller.register();
                 }),
             const SizedBox(
               height: 40.0,

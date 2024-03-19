@@ -9,7 +9,7 @@ class SplashScreenController extends GetxController {
     await Future.delayed(const Duration(milliseconds: 400));
     animate.value = true;
     await Future.delayed(const Duration(milliseconds: 1000));
-    Get.offAll(const LoginScreen(),
+    Get.offAll( LoginScreen(),
         transition: Transition.fade,
         duration: const Duration(milliseconds: 400));
   }

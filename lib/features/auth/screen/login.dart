@@ -3,12 +3,14 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:project_uas/components/button/cbutton.dart';
 import 'package:project_uas/components/textform/ctextform.dart';
+import 'package:project_uas/features/auth/controller/login_controller.dart';
 import 'package:project_uas/features/auth/screen/register.dart';
 import 'package:project_uas/features/splash/screen/splash.dart';
 import 'package:project_uas/utils/constants/ccolor.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  LoginScreen({super.key});
+  final controller = Get.put(LoginScreenController());
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +31,20 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             const SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
-            CTextForm(label: "Email"),
+            CTextForm(
+              label: "Email",
+              textController: controller.email,
+            ),
             const SizedBox(
               height: 11.0,
             ),
-            CTextForm(label: "Kata Sandi", isPassword: true),
+            CTextForm(
+                label: "Kata Sandi",
+                isPassword: true,
+                textController: controller.password),
             const SizedBox(
               height: 11.0,
             ),
@@ -62,7 +70,7 @@ class LoginScreen extends StatelessWidget {
             CButton(
                 label: "Masuk",
                 onPressed: () {
-                  Get.to(() => SplashScreen());
+                  controller.login();
                 }),
             const SizedBox(
               height: 40.0,
@@ -91,7 +99,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(
                   width: 25.0,
                 ),
-                 Expanded(
+                Expanded(
                   child: Container(
                     width: 50,
                     height: 2,
@@ -101,14 +109,14 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(
-            height: 40.0,
+              height: 40.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextButton(
                   onPressed: () {
-                    Get.to(() => const RegisterScreen());
+                    Get.to(() => RegisterScreen());
                   },
                   child: const Text(
                     "Daftar Akun Lokal Harvest",

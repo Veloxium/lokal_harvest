@@ -4,14 +4,17 @@ import 'package:project_uas/components/textform/ctextform_controller.dart';
 import 'package:project_uas/utils/constants/ccolor.dart';
 
 class CTextForm extends StatelessWidget {
-  CTextForm({super.key, required this.label, this.isPassword});
-  final controller = Get.put(CTextFormController());
-
+  const CTextForm(
+      {super.key, required this.label, this.isPassword, this.textController});
   final String label;
   final bool? isPassword;
+  final TextEditingController? textController;
 
   @override
   Widget build(BuildContext context) {
+    final controller =
+        CTextFormController(initialIsPassword: isPassword ?? false);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -37,6 +40,7 @@ class CTextForm extends StatelessWidget {
               Expanded(
                 child: Obx(
                   () => TextFormField(
+                    controller: textController,
                     obscureText: controller.isPassword.value,
                     decoration: const InputDecoration(
                       fillColor: CColors.bginput,
