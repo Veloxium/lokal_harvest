@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_uas/features/auth/screen/login.dart';
 import 'package:project_uas/features/splash/screen/splash.dart';
 import 'package:http/http.dart' as http;
+import 'package:project_uas/utils/api/capi.dart';
 
 class RegisterScreenController extends GetxController {
   static RegisterScreenController get to => Get.find();
@@ -29,7 +31,7 @@ class RegisterScreenController extends GetxController {
     }
     try {
       var res = await http.post(
-        Uri.parse('http://10.0.2.2:3000/auth/register'),
+        Uri.parse(CApi.register),
         body: {
           'email': email.text,
           'username': username.text,
@@ -40,18 +42,18 @@ class RegisterScreenController extends GetxController {
         Get.snackbar(
           "Berhasil",
           "Register Berhasil",
-          duration: const Duration(seconds: 2),
+          duration: const Duration(seconds: 1),
           backgroundColor: Colors.green,
         );
         email.clear();
         username.clear();
         password.clear();
-        Get.offAll(() => SplashScreen());
+        Get.offAll(() => LoginScreen());
       } else {
         Get.snackbar(
           "Gagal",
           "Login Gagal",
-          duration: Duration(seconds: 2),
+          duration: const Duration(seconds: 1),
           backgroundColor: Colors.red,
         );
       }

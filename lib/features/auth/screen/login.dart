@@ -5,7 +5,6 @@ import 'package:project_uas/components/button/cbutton.dart';
 import 'package:project_uas/components/textform/ctextform.dart';
 import 'package:project_uas/features/auth/controller/login_controller.dart';
 import 'package:project_uas/features/auth/screen/register.dart';
-import 'package:project_uas/features/splash/screen/splash.dart';
 import 'package:project_uas/utils/constants/ccolor.dart';
 
 class LoginScreen extends StatelessWidget {

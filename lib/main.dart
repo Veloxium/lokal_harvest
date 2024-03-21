@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:project_uas/features/layout/screen/layout.dart';
 import 'package:project_uas/features/splash/screen/splash.dart';
 import 'package:project_uas/utils/theme/theme.dart';
 
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
       theme: CAppTheme.lightTheme,
       darkTheme: CAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      // home: SplashScreen(),
+      home: LayoutScreen(),
     );
   }
 }
