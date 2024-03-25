@@ -18,6 +18,17 @@ class HomeScreen extends StatelessWidget {
     "https://cdna.artstation.com/p/assets/images/images/073/388/932/large/michal-kalisz-wpn-dlc-chainsword-closeup-03.jpg?1709558894",
   ];
 
+  final List<Map<String, String>> itemsCategory = [
+    {"text": "Sayuran", "link": "assets/iconcategory/sayuran.png"},
+    {"text": "Daging", "link": "assets/iconcategory/daging.png"},
+    {"text": "Buah", "link": "assets/iconcategory/buahbuahan.png"},
+    {"text": "Seafood", "link": "assets/iconcategory/seafood.png"},
+    {"text": "Biji-Bijian", "link": "assets/iconcategory/bijibijian.png"},
+    {"text": "Bumbu", "link": "assets/iconcategory/bumbu.png"},
+    {"text": "Umbi-Umbian", "link": "assets/iconcategory/ubiumbi.png"},
+    {"text": "Makanan Sehat", "link": "assets/iconcategory/makanan.png"},
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,6 +121,91 @@ class HomeScreen extends StatelessWidget {
             ),
             CCarousel(
               itemsImages: itemsImages,
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+              decoration: BoxDecoration(
+                  color: const Color(0xffeaeaea),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.grey.withOpacity(1),
+                        spreadRadius: 1,
+                        blurRadius: 4,
+                        offset: const Offset(0, 3))
+                  ]),
+              child: GridView(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    childAspectRatio: 0.7,
+                  ),
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    for (var item in itemsCategory)
+                      Column(
+                        children: [
+                          Container(
+                            height: 40,
+                            margin: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              image: DecorationImage(
+                                image: AssetImage(item["link"]!),
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.all(8),
+                            child: Text(
+                              item["text"]!,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                  ]),
+            ),
+            const SizedBox(
+              height: 4.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Berita Terbaru",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Lihat Semua",
+                        style: TextStyle(
+                            color: Colors.grey[500],
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Icon(
+                        Icons.arrow_forward,
+                        size: 24,
+                        color: Colors.grey[500],
+                      )
+                    ],
+                  ),
+                ],
+              ),
             )
           ],
         ));

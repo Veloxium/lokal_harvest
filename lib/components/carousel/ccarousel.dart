@@ -21,7 +21,7 @@ class CCarousel extends StatelessWidget {
           children: [
             CarouselSlider(
               options: CarouselOptions(
-                height: 200,
+                height: 210,
                 aspectRatio: 16 / 9,
                 viewportFraction: 1,
                 onPageChanged: (index, reason) =>
@@ -37,22 +37,29 @@ class CCarousel extends StatelessWidget {
               ),
               items: [
                 for (int i = 0; i < itemsImages.length; i++)
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 2.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.network(
-                      itemsImages[i],
-                      fit: BoxFit.cover,
-                      height: 200,
-                      width: double.infinity,
-                      alignment: Alignment.center,
+                  Container(
+                    margin: const EdgeInsets.only(left: 2.0, right: 2.0, bottom: 10.0),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      boxShadow: [
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(1),
+                            spreadRadius: 1,
+                            blurRadius: 4,
+                            offset: const Offset(0, 3))
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        itemsImages[i],
+                        fit: BoxFit.cover,
+                        height: 200,
+                        width: double.infinity,
+                        alignment: Alignment.center,
+                      ),
                     ),
                   ),
-                ),
               ],
             ),
             const SizedBox(
