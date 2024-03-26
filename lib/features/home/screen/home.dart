@@ -9,7 +9,6 @@ import 'package:project_uas/utils/constants/ccolor.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
-  final controller = Get.put(HomeScreenController());
 
   final List<String> itemsImages = [
     "https://cdnb.artstation.com/p/assets/images/images/073/385/693/large/michal-kalisz-wpn-dlc-chainsword-side01.jpg?1709553789",
@@ -21,19 +20,20 @@ class HomeScreen extends StatelessWidget {
   final List<Map<String, String>> itemsCategory = [
     {"text": "Sayuran", "link": "assets/iconcategory/sayuran.png"},
     {"text": "Daging", "link": "assets/iconcategory/daging.png"},
-    {"text": "Buah", "link": "assets/iconcategory/buahbuahan.png"},
+    {"text": "Buah\nBuahan", "link": "assets/iconcategory/buahbuahan.png"},
     {"text": "Seafood", "link": "assets/iconcategory/seafood.png"},
-    {"text": "Biji-Bijian", "link": "assets/iconcategory/bijibijian.png"},
+    {"text": "Biji\nBijian", "link": "assets/iconcategory/bijibijian.png"},
     {"text": "Bumbu", "link": "assets/iconcategory/bumbu.png"},
-    {"text": "Umbi-Umbian", "link": "assets/iconcategory/ubiumbi.png"},
-    {"text": "Makanan Sehat", "link": "assets/iconcategory/makanan.png"},
+    {"text": "Umbi\nUmbian", "link": "assets/iconcategory/ubiumbi.png"},
+    {"text": "Makanan\nSehat", "link": "assets/iconcategory/makanan.png"},
   ];
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(HomeScreenController());
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Column(
+        backgroundColor: CColors.background,
+        body: ListView(
           children: [
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
@@ -43,10 +43,11 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Container(
-                      padding: const EdgeInsets.all(6.0),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 6.0, horizontal: 12.0),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.circular(18),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -126,11 +127,11 @@ class HomeScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 20),
               padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
               decoration: BoxDecoration(
-                  color: const Color(0xffeaeaea),
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                        color: Colors.grey.withOpacity(1),
+                        color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 1,
                         blurRadius: 4,
                         offset: const Offset(0, 3))
@@ -163,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                               item["text"]!,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                fontSize: 12,
+                                fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

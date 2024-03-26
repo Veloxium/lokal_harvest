@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:project_uas/features/layout/screen/layout.dart';
 import 'package:project_uas/features/splash/screen/splash.dart';
+import 'package:project_uas/features/upload/screen/upload.dart';
 import 'package:project_uas/utils/theme/theme.dart';
 
 void main() {
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       darkTheme: CAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       // home: SplashScreen(),
-      home: LayoutScreen(),
+      // home: LayoutScreen(),
+      home: UploadScreen(),
     );
   }
 }

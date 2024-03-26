@@ -5,6 +5,7 @@ import 'package:project_uas/features/auth/screen/login.dart';
 import 'package:project_uas/features/auth/screen/register.dart';
 import 'package:project_uas/features/home/screen/home.dart';
 import 'package:project_uas/features/layout/controller/layout_controller.dart';
+import 'package:project_uas/features/products/screen/product.dart';
 import 'package:project_uas/utils/constants/ccolor.dart';
 
 class LayoutScreen extends StatefulWidget {
@@ -19,7 +20,7 @@ class _LayoutScreenState extends State<LayoutScreen> {
   final PageController _pageController = PageController();
   final List<Widget> _children = [
     HomeScreen(),
-    LoginScreen(),
+    ProductScreen(),
     RegisterScreen(),
     LoginScreen()
   ];
